@@ -5,7 +5,7 @@ Install Ruby: 2.5.7
 How to execute:
 
 1. opend CMD
-2. unzip the folder "assembler_interpreter"
+2. git clone https://github.com/spotturu/assembler_interpreter.git
 3. cd assembler_interpreter
 4. Run "ruby assembler_interpreter.rb"
 5. Enter the list of commands for example:
