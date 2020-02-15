@@ -2,11 +2,13 @@ require './parse_error.rb'
 
 module AssemblerInterpreter
   module Instruction
-    class Add
+    class Mul
       def self.build(params, registers)
         begin
           raise ParseError.new "Invalid params #{params}" if params.length != 2
+
           values = params.map { |param| Value.decorate(param, registers) }
+
           new(values)
         rescue ParseError => e
            return "ERROR: #{e.message}"
@@ -14,8 +16,9 @@ module AssemblerInterpreter
       end
 
       def execute(registers)
-        sum = @values.map { |v| v.value(registers) }.reduce(&:+)
-        registers[@values[0].key] = sum
+        product = @values.map { |v| v.value(registers) }.reduce(&:*)
+
+        registers[@values[0].key] = product
       end
 
       private
