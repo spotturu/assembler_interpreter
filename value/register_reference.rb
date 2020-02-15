@@ -1,12 +1,16 @@
 module AssemblerInterpreter
   module Value
-    class Numeric
+    class RegisterReference
       def initialize(value)
         @value = value
       end
 
-      def value(_registers)
+      def key
         @value
+      end
+
+      def value(registers)
+        registers[@value]
       end
     end
   end
